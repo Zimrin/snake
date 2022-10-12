@@ -4,7 +4,7 @@ set background: 'white'
 
 class Snake
 
-    RADIUS = 10
+    RADIUS = 100
 
     attr_accessor :direction, :shape, :x, :y
     def initialize(speed,direction = :right)
