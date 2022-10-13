@@ -1,6 +1,8 @@
 require 'ruby2d'
 
-set background: 'white'
+set background: 'navy'
+
+GRID_SIZE = 20
 
 class Snake
 
