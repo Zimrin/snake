@@ -1,31 +1,23 @@
 require 'ruby2d'
 require './snake'
 require './bait'
+require './controls'
 
 snake = Snake.new
 bait = Bait.new
 
-
-on :key_down do |event|
-    if event.key == 'w'
-      snake.direction = :up
-    elsif event.key == 's'
-      snake.direction = :down
-    elsif event.key == 'a'
-      snake.direction = :left
-    elsif event.key == 'd'
-      snake.direction = :right
-    end
-end
+map_controls(snake)
 
 update do
     clear
      
     snake.draw
+    snake.off_bounds
     snake.movement
     #if snake.off_bounds
        # snake = Snake.new(1.5)
     #end
+    
     bait.draw
     if bait.ate(snake)
         puts "smelt it"

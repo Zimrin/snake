@@ -1,4 +1,3 @@
-require 'ruby2d'
 
 set background: 'white'
 set fps_cap: 20
@@ -8,7 +7,7 @@ RADIUS = 10
 
 class Snake
 
-    attr_accessor :direction
+    attr_accessor :direction, :start
     def initialize(direction = :right)
         @start = [[2,2], [3,2], [4,2], [5,2]]
         @direction = direction
@@ -39,6 +38,10 @@ class Snake
 
     def off_bounds
        # @x <= 0 || @shape.x >= Window.width || @y <= 0 || (@y+RADIUS) >= Window.height
+       if head[1] == 0
+            puts "#{Window.height}"
+            @start.push([head[0], 50])
+       end
     end
 end
 
