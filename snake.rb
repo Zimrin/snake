@@ -37,11 +37,21 @@ class Snake
     end
 
     def off_bounds
-       # @x <= 0 || @shape.x >= Window.width || @y <= 0 || (@y+RADIUS) >= Window.height
-       if head[1] == 0
-            puts "#{Window.height}"
-            @start.push([head[0], 50])
-       end
+        if head[1] == 0
+            @start.shift
+            @start.push([head[0],24])
+        elsif head[1] > 24
+            @start.shift
+            @start.push([head[0],0])
+        end
+
+        if head[0] == 0
+            @start.shift
+            @start.push([32,head[1]])
+        elsif head[0] > 32
+            @start.shift
+            @start.push([0,head[1]])
+        end
     end
 end
 
