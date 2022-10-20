@@ -1,5 +1,6 @@
 require 'ruby2d'
 require './snake'
+require './bait'
 
 snake = Snake.new
 bait = Bait.new
