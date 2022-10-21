@@ -21,6 +21,7 @@ update do
     bait.draw
     if bait.ate(snake)
         puts "smelt it"
+        snake.grow
     end
 end
 
