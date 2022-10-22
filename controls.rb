@@ -2,13 +2,13 @@ def map_controls(snake)
 
     on :key_down do |event|
         if event.key == 'w'
-            snake.direction = :up
+            snake.change_direction(:up)
         elsif event.key == 's'
-            snake.direction = :down
+            snake.change_direction(:down)
         elsif event.key == 'a'
-            snake.direction = :left
+            snake.change_direction(:left)
         elsif event.key == 'd'
-            snake.direction = :right
+            snake.change_direction(:right)
         end
     end
 end

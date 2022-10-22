@@ -11,8 +11,10 @@ class Snake
 
     attr_accessor :direction, :body
     def initialize(direction = :right)
-        @body = [[2,2], [3,2], [4,2], [5,2]]
+        @body = [[2,2], [3,2], [4,2], [5,2], [6,2], [7,2]]
         @direction = direction
+        @directions = [:up,:down,:left,:right]
+
     end
     
     def draw
@@ -20,6 +22,19 @@ class Snake
             Circle.new(x: position[0] * GRID_SIZE, y: position[1] * GRID_SIZE,radius: RADIUS,sectors: 50,color: 'red',z: 11)
         end
     end
+
+    def change_direction(next_direction)
+        if @direction != OPPOSITE_DIRECTIONS[next_direction]
+            @direction = next_direction
+        end
+    end
+
+    OPPOSITE_DIRECTIONS = {
+        up: :down,
+        down: :up,
+        right: :left,
+        left: :right
+    }
 
     def grow
         if @direction == :up
@@ -40,6 +55,10 @@ class Snake
 
     def head
         @body[-1]
+    end
+
+    def second_last
+        @body[-2]
     end
 
     def off_bounds
