@@ -10,7 +10,11 @@ class Bait
         Circle.new(x: @bait[0] * GRID_SIZE, y: @bait[1] * GRID_SIZE,radius: RADIUS-5,sectors: 32,color: 'brown',z: 10)
     end
 
-    def ate(snake)
+    def ate?(snake)
         snake.head == @bait
+    end
+
+    def randomize_position
+        @bait = [rand(32),rand(24)]
     end
 end

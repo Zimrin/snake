@@ -2,7 +2,7 @@ require './bait.rb'
 
 
 set background: 'white'
-set fps_cap: 20
+set fps_cap: 10
 
 GRID_SIZE = 20
 RADIUS = 10
@@ -11,10 +11,8 @@ class Snake
 
     attr_accessor :direction, :body
     def initialize(direction = :right)
-        @body = [[2,2], [3,2], [4,2], [5,2], [6,2], [7,2]]
+        @body = [[2,2], [3,2], [4,2], [5,2]]
         @direction = direction
-        @directions = [:up,:down,:left,:right]
-
     end
     
     def draw
@@ -36,6 +34,12 @@ class Snake
         left: :right
     }
 
+    def collide?
+        temp = @body.dup
+        temp.pop
+        temp.include?(head)
+    end
+
     def grow
         if @direction == :up
             @body.push([head[0], head[1] - 1])
@@ -55,10 +59,6 @@ class Snake
 
     def head
         @body[-1]
-    end
-
-    def second_last
-        @body[-2]
     end
 
     def off_bounds
