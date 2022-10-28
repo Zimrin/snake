@@ -2,7 +2,7 @@ require './bait.rb'
 
 
 set background: 'white'
-set fps_cap: 10
+set fps_cap: 20
 
 GRID_SIZE = 20
 RADIUS = 10
@@ -17,7 +17,7 @@ class Snake
     
     def draw
         @body.each do |position|
-            Circle.new(x: position[0] * GRID_SIZE, y: position[1] * GRID_SIZE,radius: RADIUS,sectors: 50,color: 'red',z: 11)
+            Circle.new(x: position[0] * GRID_SIZE, y: position[1] * GRID_SIZE,radius: RADIUS,sectors: 50,color: 'red')
         end
     end
 
