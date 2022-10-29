@@ -1,5 +1,4 @@
 def map_controls(snake)
-
     on :key_down do |event|
         if event.key == 'w'
             snake.change_direction(:up)
@@ -13,10 +12,10 @@ def map_controls(snake)
     end
 end
 
-def start_game(menu)
+def map_menu_keys(&on_space_press)
     on :key_down do |event|
         if event.key == 'space'
-            menu.change_scene
+            on_space_press.call
         end
     end
 end
