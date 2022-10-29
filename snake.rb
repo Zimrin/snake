@@ -1,5 +1,5 @@
-require './bait.rb'
-
+require './bait'
+require './controls'
 
 set background: 'white'
 set fps_cap: 20
@@ -8,8 +8,8 @@ GRID_SIZE = 20
 RADIUS = 10
 
 class Snake
-
     attr_accessor :direction, :body
+
     def initialize(direction = :right)
         @body = [[2,2], [3,2], [4,2], [5,2]]
         @direction = direction

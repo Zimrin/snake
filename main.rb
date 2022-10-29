@@ -12,22 +12,20 @@ score = Score.new
 game = Game.new(snake,bait,score)
 menu = Menu.new
 
-
 map_controls(snake)
-start_game(menu)
+scene = :menu
+
+map_menu_keys do
+    scene = :game
+end
 
 update do
     clear
-
-    if menu.get_scene == 1
-        game.start
-    elsif menu.get_scene == 0
+    if scene == :menu
         menu.draw
+    else
+        game.start
     end
-
-    
-    
-
 end
 
 show

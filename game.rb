@@ -15,7 +15,7 @@ class Game
         @score.draw
         if @snake.collide?
             @snake = Snake.new
-            map_controls(snake)
+            map_controls(@snake)
             @score = Score.new
         end
 
