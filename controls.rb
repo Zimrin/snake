@@ -12,3 +12,11 @@ def map_controls(snake)
         end
     end
 end
+
+def start_game(menu)
+    on :key_down do |event|
+        if event.key == 'space'
+            menu.change_scene
+        end
+    end
+end

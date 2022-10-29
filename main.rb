@@ -3,34 +3,29 @@ require './snake'
 require './bait'
 require './controls'
 require './score'
+require './menu'
+require './game'
 
 snake = Snake.new
 bait = Bait.new
 score = Score.new
+game = Game.new(snake,bait,score)
+menu = Menu.new
+
 
 map_controls(snake)
+start_game(menu)
 
 update do
     clear
 
-    score.draw
-    if snake.collide?
-        snake = Snake.new
-        map_controls(snake)
-        score = Score.new
+    if menu.get_scene == 1
+        game.start
+    elsif menu.get_scene == 0
+        menu.draw
     end
 
-
-    snake.draw
-    snake.off_bounds
-    snake.movement
-
-    bait.draw
-    if bait.ate?(snake)
-        snake.grow
-        bait.randomize_position
-        score.ate?
-    end
+    
     
 
 end
