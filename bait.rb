@@ -15,6 +15,6 @@ class Bait
     end
 
     def randomize_position
-        @bait = [rand(32),rand(24)]
+        @bait = [rand(1..31),rand(1..23)]
     end
 end

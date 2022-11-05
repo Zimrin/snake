@@ -1,6 +1,7 @@
 require './snake'
 require './bait'
 require './score'
+require './controls'
 
 class Game
 
@@ -13,16 +14,16 @@ class Game
     def start
     
         @score.draw
+
+        @snake.draw
+        @snake.off_bounds
+        @snake.movement
+
         if @snake.collide?
             @snake = Snake.new
             map_controls(@snake)
             @score = Score.new
         end
-
-
-        @snake.draw
-        @snake.off_bounds
-        @snake.movement
 
         @bait.draw
         if @bait.ate?(@snake)

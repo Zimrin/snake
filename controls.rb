@@ -1,3 +1,5 @@
+require './snake'
+
 def map_controls(snake)
     on :key_down do |event|
         if event.key == 'w'
