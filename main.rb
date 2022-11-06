@@ -15,13 +15,18 @@ menu = Menu.new
 map_controls(snake)
 scene = :menu
 
+=begin
 map_menu_keys do
     scene = :game
 end
+=end
 
 update do
     clear
-    if scene == :menu
+    map_menu_keys do
+        scene = :game
+    end
+    if scene == :menu or snake.collide?
         menu.draw
     else
         game.start

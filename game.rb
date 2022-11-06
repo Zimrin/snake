@@ -20,9 +20,12 @@ class Game
         @snake.movement
 
         if @snake.collide?
-            @snake = Snake.new
-            map_controls(@snake)
-            @score = Score.new
+            return :menu
+            #menu.draw
+           # regen = Snake.new
+            #@snake = regen
+            #map_controls(@snake)
+            #@score = Score.new
         end
 
         @bait.draw
