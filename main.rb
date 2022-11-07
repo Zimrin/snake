@@ -15,11 +15,6 @@ menu = Menu.new
 map_controls(snake)
 scene = :menu
 
-=begin
-map_menu_keys do
-    scene = :game
-end
-=end
 
 update do
     clear
