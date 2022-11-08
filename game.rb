@@ -18,7 +18,7 @@ class Game
         @snake.draw
         @snake.off_bounds
         @snake.movement
-
+=begin
         if @snake.collide?
             return :menu
             #menu.draw
@@ -27,7 +27,7 @@ class Game
             #map_controls(@snake)
             #@score = Score.new
         end
-
+=end
         @bait.draw
         if @bait.ate?(@snake)
             @snake.grow

@@ -13,16 +13,20 @@ game = Game.new(snake,bait,score)
 menu = Menu.new
 
 map_controls(snake)
-scene = :menu
+$scene = :menu
 
 
 update do
     clear
+
+=begin
     map_menu_keys do
         scene = :game
     end
+=end
     if scene == :menu or snake.collide?
         menu.draw
+        menu.play_game(game)
     else
         game.start
     end

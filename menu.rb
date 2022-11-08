@@ -1,3 +1,5 @@
+require './game'
+
 class Menu
  
     def draw
@@ -9,6 +11,10 @@ class Menu
         color: 'red',
         z: 11
       )
+    end
+
+    def play_game(game)
+      game.start
     end
 
 end
