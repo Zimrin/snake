@@ -6,29 +6,40 @@ require './score'
 require './menu'
 require './game'
 
-snake = Snake.new
-bait = Bait.new
-score = Score.new
-game = Game.new(snake,bait,score)
-menu = Menu.new
+@snake = nil
+@game = nil
 
-map_controls(snake)
-$scene = :menu
+@menu = Menu.new
+@scene = :menu
 
+def init_game
+    @snake = Snake.new
+
+    bait = Bait.new
+    score = Score.new
+    @game = Game.new(@snake,bait,score)
+    @game.on_collision do
+        @scene = :menu
+    end
+
+    @scene = :game
+end
+
+map_menu_keys do
+    init_game()
+end
+
+map_controls do |direction|
+    @snake.change_direction(direction)
+end
 
 update do
     clear
-
-=begin
-    map_menu_keys do
-        scene = :game
-    end
-=end
-    if scene == :menu or snake.collide?
-        menu.draw
-        menu.play_game(game)
+    puts @scene
+    if @scene == :menu
+        @menu.draw
     else
-        game.start
+        @game.draw
     end
 end
 

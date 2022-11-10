@@ -4,30 +4,30 @@ require './score'
 require './controls'
 
 class Game
+    attr_accessor :collision_callback
 
     def initialize(snake,bait,score)
         @snake = snake
         @bait = bait
         @score = score
     end
+
+    def on_collision(&block)
+        @collision_callback = block
+    end
     
-    def start
-    
+    def draw
         @score.draw
 
         @snake.draw
         @snake.off_bounds
         @snake.movement
-=begin
+
         if @snake.collide?
-            return :menu
-            #menu.draw
-           # regen = Snake.new
-            #@snake = regen
-            #map_controls(@snake)
-            #@score = Score.new
+            collision_callback.call
+            return
         end
-=end
+
         @bait.draw
         if @bait.ate?(@snake)
             @snake.grow

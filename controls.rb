@@ -2,29 +2,28 @@ require './snake'
 require './game'
 require './scene'
 
-def map_controls(snake)
+def map_controls(&on_key_press)
     on :key_down do |event|
         if event.key == 'w'
-            snake.change_direction(:up)
+            on_key_press.call(:up)
         elsif event.key == 's'
-            snake.change_direction(:down)
+            on_key_press.call(:down)
         elsif event.key == 'a'
-            snake.change_direction(:left)
+            on_key_press.call(:left)
         elsif event.key == 'd'
-            snake.change_direction(:right)
+            on_key_press.call(:right)
         elsif event.key == 'space'
-            change
+            change_scene
         end
     end
 end
 
-=begin
+
 def map_menu_keys(&on_space_press)
     on :key_down do |event|
+        puts "asd"
         if event.key == 'space'
-            play_game
-            #on_space_press.call
+            on_space_press.call
         end
     end
 end
-=end
