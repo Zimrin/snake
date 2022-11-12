@@ -17,7 +17,7 @@ class Snake
     
     def draw
         @body.each do |position|
-            Circle.new(x: position[0] * GRID_SIZE, y: position[1] * GRID_SIZE,radius: RADIUS,sectors: 50,color: 'red')
+            Circle.new(x: position[0] * GRID_SIZE, y: position[1] * GRID_SIZE,radius: RADIUS,sectors: 50,color: 'red',z: 10)
         end
     end
 

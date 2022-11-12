@@ -35,7 +35,6 @@ end
 
 update do
     clear
-    puts @scene
     if @scene == :menu
         @menu.draw
     else

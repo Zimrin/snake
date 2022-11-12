@@ -10,7 +10,12 @@ class Game
         @snake = snake
         @bait = bait
         @score = score
+        file = File.open("highscore.txt")
+        @file_data = file.read
+        file.close
     end
+
+    
 
     def on_collision(&block)
         @collision_callback = block
@@ -22,6 +27,10 @@ class Game
         @snake.draw
         @snake.off_bounds
         @snake.movement
+
+        if @score.score > @file_data.to_i
+            File.open("highscore.txt", "w") { |f| f.write @score.score }
+        end
 
         if @snake.collide?
             collision_callback.call
