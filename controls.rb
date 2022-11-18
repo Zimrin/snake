@@ -1,5 +1,3 @@
-require './snake'
-require './game'
 
 def map_controls(&on_key_press)
     on :key_down do |event|
